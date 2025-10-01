@@ -1,4 +1,4 @@
-**EXERCISE 1 **
+EXERCISE 1 
 
 **BEHAVIOURAL DESIGN PATTERN**
 
@@ -166,7 +166,7 @@ The Proxy pattern provides a surrogate or placeholder for another object to cont
 
 •	**Main**: Application class that demonstrates secure ATM access through proxy
 
-**EXERCISE 2 **
+EXERCISE 2 
 
 **🏫 Virtual Classroom Manager**
 
