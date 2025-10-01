@@ -1,166 +1,168 @@
-EXERCISE 1 - Design Patterns Implementation
-BEHAVIOURAL DESIGN PATTERN
-1. Weather Station Notification System - Observer Pattern
-Use Case
+EXERCISE 1 
+
+**BEHAVIOURAL DESIGN PATTERN**
+
+**1. Weather Station Notification System - Observer Pattern**
+
+**Use Case**
 
 This console-based application allows users to update and monitor weather conditions. It notifies all registered observers whenever weather measurements are updated, ensuring that all interested parties receive the latest weather information in real-time.
 
-Design Pattern
+**Design Pattern**
 
 The application uses the Observer Design Pattern. This pattern establishes a one-to-many relationship between a subject and its observers. When the subject's state changes, all registered observers are notified and updated automatically.
 
-How it Relates to the Use Case
+**How it Relates to the Use Case**
 
-Subject: WeatherStation class which maintains weather measurements (temperature, humidity, pressure)
+**Subject**: WeatherStation class which maintains weather measurements (temperature, humidity, pressure)
 
-Observers: Any class implementing the WeatherObserver interface, such as PhoneDisplay and TVDisplay, which will be notified of weather updates
+**Observers**: Any class implementing the WeatherObserver interface, such as PhoneDisplay and TVDisplay, which will be notified of weather updates
 
-Classes
+**Classes**
 
-WeatherStation: Manages the list of observers and notifies them when weather measurements are updated
+**WeatherStation**: Manages the list of observers and notifies them when weather measurements are updated
 
-WeatherObserver: Interface for all observers that need to be notified of weather changes
+**WeatherObserver**: Interface for all observers that need to be notified of weather changes
 
-PhoneDisplay: An implementation of the WeatherObserver interface that displays weather updates on a phone
+**PhoneDisplay**: An implementation of the WeatherObserver interface that displays weather updates on a phone
 
-TVDisplay: An implementation of the WeatherObserver interface that displays weather updates on a TV
+**TVDisplay**: An implementation of the WeatherObserver interface that displays weather updates on a TV
 
-Main: Main class that runs the application and provides functionality for updating weather measurements
+**Main**: Main class that runs the application and provides functionality for updating weather measurements
 
-2. Travel Route Planner - Strategy Pattern
-Use Case
+**2. Travel Route Planner - Strategy Pattern**
+
+**Use Case**
 
 This application demonstrates a flexible travel route planning system that supports different route calculation strategies. Users can select different routing strategies (Shortest Time, Shortest Distance, Scenic Route) based on their travel preferences.
 
-Design Pattern
+**Design Pattern**
 
 The Strategy Pattern is used to encapsulate different route calculation algorithms and make them interchangeable. This allows users to switch between routing strategies at runtime without changing the core route planning logic.
 
-Relation to Use Case
+**How it Relates to the Use Case**
 
-RouteStrategy: Interface defining the route calculation contract
+**RouteStrategy**: Interface defining the route calculation contract
 
-Concrete strategies: ShortestTimeStrategy, ShortestDistanceStrategy, ScenicRouteStrategy
+**Concrete strategies**: ShortestTimeStrategy, ShortestDistanceStrategy, ScenicRouteStrategy
 
-RoutePlanner: Uses the selected strategy to calculate optimal routes
+**RoutePlanner**: Uses the selected strategy to calculate optimal routes
 
-Classes
+**Classes**
 
-RouteStrategy: Interface defining the strategy for route calculation
+**RouteStrategy**: Interface defining the strategy for route calculation
 
-ShortestTimeStrategy: Concrete strategy that calculates the fastest route
+**ShortestTimeStrategy**: Concrete strategy that calculates the fastest route
 
-ShortestDistanceStrategy: Concrete strategy that calculates the shortest distance route
+**ShortestDistanceStrategy**: Concrete strategy that calculates the shortest distance route
 
-ScenicRouteStrategy: Concrete strategy that calculates the most scenic route
+**ScenicRouteStrategy**: Concrete strategy that calculates the most scenic route
 
-RoutePlanner: Main class that utilizes the selected routing strategy
+**RoutePlanner**: Main class that utilizes the selected routing strategy
 
-Main: Client class that interacts with users to plan routes using different strategies
+**Main**: Client class that interacts with users to plan routes using different strategies
 
-CREATIONAL DESIGN PATTERN
-1. Database Connection Manager - Singleton Pattern
-Use Case
+**CREATIONAL DESIGN PATTERN**
+
+**1. Database Connection Manager - Singleton Pattern**
+
+**Use Case**
 
 The Database Connection Manager application ensures that only one instance of database connection manager exists throughout the application lifecycle. It provides centralized control over database connections, managing connection pooling and ensuring thread-safe operations.
 
-Design Pattern
+**Design Pattern**
 
-Singleton Design Pattern:
+Ensures a class has only one instance and provides a global point of access to it
 
-Purpose: Ensures a class has only one instance and provides a global point of access to it
+**How it Relates to the Use Case**
 
-Relation to Use Case: Prevents multiple database connection instances that could lead to connection conflicts and resource wastage
+Prevents multiple database connection instances that could lead to connection conflicts and resource wastage
 
-Classes
+**Classes**
 
-DatabaseConnectionManager: Singleton class that manages database connections
+**DatabaseConnectionManager**: Singleton class that manages database connections,Provides methods for connecting, disconnecting, and executing queries, Maintains connection count and state management
 
-Provides methods for connecting, disconnecting, and executing queries
+**Main**: Demonstrates the singleton behavior by showing multiple references point to the same instance
 
-Maintains connection count and state management
+**2. Notification System - Factory Pattern**
 
-Main: Demonstrates the singleton behavior by showing multiple references point to the same instance
-
-2. Notification System - Factory Pattern
-Use Case
+**Use Case**
 
 This console-based Notification System allows users to send different types of notifications (Email, SMS, Push) through a unified interface. The system creates appropriate notification objects based on user input without exposing the instantiation logic.
 
-Design Pattern: Factory Pattern
+**Design Pattern**
 
 The Factory Pattern is utilized to create notification objects based on user input. This pattern defines an interface for creating objects but lets the factory class decide which object to instantiate.
 
-Relation to Use Case
+**How it Relates to the Use Case**
 
-NotificationFactory: Factory class that handles creation of EmailNotification, SMSNotification, and PushNotification objects
+**NotificationFactory**: Factory class that handles creation of EmailNotification, SMSNotification, and PushNotification objects, Centralizes object creation logic and makes the system extensible for new notification types
 
-Centralizes object creation logic and makes the system extensible for new notification types
+**Classes**
 
-Classes
+**Notification**: Interface defining common notification operations
 
-Notification: Interface defining common notification operations
+**EmailNotification**: Concrete class for email notifications with email-specific formatting
 
-EmailNotification: Concrete class for email notifications with email-specific formatting
+**SMSNotification**: Concrete class for SMS notifications with character limit considerations
 
-SMSNotification: Concrete class for SMS notifications with character limit considerations
+**PushNotification**: Concrete class for push notifications with mobile-specific features
 
-PushNotification: Concrete class for push notifications with mobile-specific features
+**NotificationFactory**: Factory class responsible for creating appropriate notification instances
 
-NotificationFactory: Factory class responsible for creating appropriate notification instances
+**Main**: Application entry point that uses factory to create and send notifications
 
-Main: Application entry point that uses factory to create and send notifications
+**STRUCTURAL DESIGN PATTERN**
 
-STRUCTURAL DESIGN PATTERN
-1. Payment Gateway Integration - Adapter Pattern
-Use Case
+**1. Payment Gateway Integration - Adapter Pattern**
+
+**Use Case**
 
 The Payment Gateway Integration system demonstrates how to make incompatible payment systems work together. It adapts a legacy payment system to work with modern payment gateway interfaces, allowing seamless integration without modifying existing legacy code.
 
-Design Pattern Used
-Adapter Pattern
-
-Target: ModernPaymentGateway (interface expected by modern systems)
-
-Adaptee: LegacyPaymentSystem (existing incompatible system)
-
-Adapter: PaymentGatewayAdapter (bridges the compatibility gap)
+**Design Pattern**
 
 The Adapter Pattern is used to convert the interface of a class into another interface clients expect. This allows classes with incompatible interfaces to work together.
 
-Classes Used
+**How it Relates to the Use Case**
 
-ModernPaymentGateway: Interface defining modern payment processing methods
+The Adapter Pattern bridges the gap between modern payment systems and legacy payment infrastructure, allowing new applications to process payments through outdated but reliable legacy systems without rewriting existing code.
 
-LegacyPaymentSystem: Existing class with incompatible payment processing methods
+**Classes**
 
-PaymentGatewayAdapter: Adapter class that makes LegacyPaymentSystem compatible with ModernPaymentGateway
+**ModernPaymentGateway**: Interface defining modern payment processing methods
 
-Main: Client class that demonstrates the adapter pattern in action
+**LegacyPaymentSystem**: Existing class with incompatible payment processing methods
 
-2. ATM Security System - Proxy Pattern
-Use Case
+**PaymentGatewayAdapter**: Adapter class that makes LegacyPaymentSystem compatible with ModernPaymentGateway
+
+**Main**: Client class that demonstrates the adapter pattern in action
+
+**2. ATM Security System - Proxy Pattern**
+
+**Use Case**
 
 This application models a secure ATM system where access to real ATM operations is controlled through a proxy. The proxy provides security features like authentication, access control, and logging before allowing operations on the real ATM.
 
-Design Pattern
-Proxy Pattern
+**Design Pattern**
 
-The Proxy pattern provides a surrogate or placeholder for another object to control access to it. In this case:
+The Proxy pattern provides a surrogate or placeholder for another object to control access to it
 
-Subject: ATM interface defining ATM operations
+**How it Relates to the Use Case**
 
-Real Subject: RealATM class that performs actual ATM operations
+**Subject**: ATM interface defining ATM operations
 
-Proxy: ATMSecurityProxy that controls access to RealATM
+**Real Subject**: RealATM class that performs actual ATM operations
 
-Classes
+**Proxy**: ATMSecurityProxy that controls access to RealATM
 
-ATM: Interface defining common ATM operations (withdraw, checkBalance, changePIN)
+**Classes**
 
-RealATM: Real implementation that performs actual banking operations
+**ATM**: Interface defining common ATM operations (withdraw, checkBalance, changePIN)
 
-ATMSecurityProxy: Proxy that adds security layer (authentication, access control)
+**RealATM**: Real implementation that performs actual banking operations
 
-Main: Application class that demonstrates secure ATM access through proxy
+**ATMSecurityProxy**: Proxy that adds security layer (authentication, access control)
+
+**Main**: Application class that demonstrates secure ATM access through proxy
 
